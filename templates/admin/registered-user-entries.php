@@ -47,7 +47,7 @@
 
             }
             else{
-                echo '<td></td><td></td><td><h3>No users registered</h3></td><td></td><td></td>';
+                echo '<td colspan=4 style="text-align:center"><h3>No users registered</h3></td>';
             }
             ?>
         </tbody>

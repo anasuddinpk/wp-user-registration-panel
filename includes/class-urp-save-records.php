@@ -87,13 +87,13 @@ if ( ! class_exists( 'URP_Save_Records' ) ) {
 			}
 
 			$sql = "";
+			$username = ucwords($username);
 
 			if( $proceed  != 'to_update'){
 				$sql = "INSERT INTO `$table_name` (`image_url`, `name`, `email`, `phone`, `dob`) 
 				VALUES ('$profile', '$username', '$email', '$phone', '$dob'); $charset_collate;";
 				require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 				dbDelta( $sql );
-
 			}
 			else{
 				global $wpdb;

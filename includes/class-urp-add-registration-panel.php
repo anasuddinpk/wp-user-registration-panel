@@ -43,15 +43,6 @@ if ( ! class_exists( 'URP_Add_Registration_Panel' ) ) {
                     $wpdb->delete( $table_name, array( 'id' => $_GET['id'] ) );
 
                 }
-
-                if($_GET['action'] == 'edit'){
-                    global $wpdb;
-		 
-                    $table_name = $wpdb->prefix . "users_registration"; 
-
-                    $wpdb->delete( $table_name, array( 'id' => $_GET['id'] ) );
-
-                }
                 
             }
 
