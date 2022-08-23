@@ -37,9 +37,14 @@ if ( ! class_exists( 'URP_Create_Users_Db_Table' ) ) {
 				`id` INT(255) NOT NULL AUTO_INCREMENT , 
 				`image_url` VARCHAR(255) NOT NULL , 
 				`name` VARCHAR(255) NOT NULL , 
+				`role` VARCHAR(50) NOT NULL , 
 				`email` VARCHAR(255) NOT NULL , 
 				`phone` VARCHAR(255) NOT NULL , 
 				`dob` DATE NOT NULL , 
+				`gender` VARCHAR(25) NOT NULL , 
+				`website_url` VARCHAR(255) NOT NULL , 
+				`languages` VARCHAR(25) NOT NULL , 
+				`technicality` VARCHAR(50) NOT NULL , 
 				PRIMARY KEY (`email`), UNIQUE `id` (`id`)
 			); $charset_collate;";
 

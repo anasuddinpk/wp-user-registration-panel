@@ -19,7 +19,7 @@ if ( ! class_exists( 'URP_Save_Records' ) ) {
 		/**
 		 * Saves records to Users Reg DB's table.
 		 */
-		public function saves_records_to_user_reg_table($username, $email, $phone, $dob, $profile){
+		public function saves_records_to_user_reg_table($username, $email, $role, $phone, $web, $gender, $dob, $user_lang, $user_tech, $profile){
 
 			require_once( ABSPATH . '/wp-includes/pluggable.php' ); 
 			require_once( ABSPATH . 'wp-admin/includes/file.php' );
@@ -90,14 +90,14 @@ if ( ! class_exists( 'URP_Save_Records' ) ) {
 			$username = ucwords($username);
 
 			if( $proceed  != 'to_update'){
-				$sql = "INSERT INTO `$table_name` (`image_url`, `name`, `email`, `phone`, `dob`) 
-				VALUES ('$profile', '$username', '$email', '$phone', '$dob'); $charset_collate;";
+				$sql = "INSERT INTO `$table_name` (`image_url`, `name`, `email`, `phone`, `dob`, `role`, `website_url`, `languages`, `technicality`, `gender`) 
+				VALUES ('$profile', '$username', '$email', '$phone', '$dob', '$role', '$web', '$user_lang', '$user_tech', '$gender'); $charset_collate;";
 				require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 				dbDelta( $sql );
 			}
 			else{
 				global $wpdb;
-				$wpdb->update( $table_name, array( 'name' => $username, 'phone' => $phone, 'dob' => $dob, 'image_url' => $profile ), array( 'email' => $email ) );
+				$wpdb->update( $table_name, array( 'name' => $username, 'phone' => $phone, 'dob' => $dob, 'image_url' => $profile, 'role' => $role, 'website_url' => $web, 'languages' => $user_lang, 'technicality' => $user_tech, 'gender' => $gender ), array( 'email' => $email ) );
 			}
 
 		}

@@ -15,7 +15,6 @@ if ( ! class_exists( 'URP_Add_Registration_Panel' ) ) {
 	 * Class URP_Add_Registration_Panel.
 	 */
 	class URP_Add_Registration_Panel {
-
 		/**
 		 *  Constructor.
 		 */
@@ -28,8 +27,26 @@ if ( ! class_exists( 'URP_Add_Registration_Panel' ) ) {
                         <p><strong>User registered successfully.</strong></p><button type="button" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></button>
                       </div>';
 
+                $user_tech = "";
+                if( $_POST['user_tech'] == "" ){
+                    $user_tech = "—";
+                }
+                else{
+                    $user_tech = implode(',', $_POST['user_tech']);
+                }
+
                 $save_records_obj = new URP_Save_Records();
-                $save_records_obj->saves_records_to_user_reg_table($_POST['user_name'], $_POST['user_email'], $_POST['user_phone'], $_POST['user_dob'], $_FILES['user_profile']);
+                $save_records_obj->saves_records_to_user_reg_table(
+                    $_POST['user_name'], 
+                    $_POST['user_email'],  
+                    $_POST['user_role'], 
+                    $_POST['user_phone'], 
+                    $_POST['user_web'], 
+                    $_POST['user_gender'], 
+                    $_POST['user_dob'], 
+                    implode(',', $_POST['user_lang']), 
+                    $user_tech, 
+                    $_FILES['user_profile']);
 
             }   
         
@@ -41,7 +58,6 @@ if ( ! class_exists( 'URP_Add_Registration_Panel' ) ) {
                     $table_name = $wpdb->prefix . "users_registration"; 
 
                     $wpdb->delete( $table_name, array( 'id' => $_GET['id'] ) );
-
                 }
                 
             }
